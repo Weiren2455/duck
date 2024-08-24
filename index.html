@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>點擊鴨鴨遊戲</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        img {
+            width: 150px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>點擊次數: <span id="clickCount">0</span></h1>
+    <img id="duckImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Ll7j7A1oY10i28Idr10mk-AYekst7guLHA&s" alt="Duck">
+
+    <script>
+        // 初始化點擊次數
+        let clickCount = localStorage.getItem('clickCount') ? parseInt(localStorage.getItem('clickCount')) : 0;
+        document.getElementById('clickCount').textContent = clickCount;
+
+        // 點擊鴨鴨圖片事件
+        document.getElementById('duckImage').addEventListener('click', function() {
+            clickCount++;
+            document.getElementById('clickCount').textContent = clickCount;
+            localStorage.setItem('clickCount', clickCount); // 儲存到 localStorage
+        });
+    </script>
+</body>
+</html>
